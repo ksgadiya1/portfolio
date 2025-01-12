@@ -1,9 +1,11 @@
-import React, { use, useRef } from 'react'
+import React, {  useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 
 import { assets } from '@/assets/assets'
 
 const navbar = () => {
+
+    const [isScroll, setScroll] = useState(false) 
 
     const sideMenu = useRef();
 
@@ -15,6 +17,20 @@ const navbar = () => {
         sideMenu.current.style.transform = 'translateX(16rem)';
     }   
 
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (scrollY > 50 ){
+                setScroll(true)
+
+            }
+            else{
+                setScroll(false)
+            }
+        })
+        
+    },[])
+
+
 
 
 
@@ -23,18 +39,17 @@ const navbar = () => {
 
     return (
         <>
-            <nav className='w-full fixed px-5 lg:px-8 xl:px-[8%] py-4  flex items-center justify-between z-50'>
-                <div className="p-3 relative flex flex-col">
+            <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 opacity-90 ${isScroll ? 'bg-white bg-opacity-50 backdrop-blur-lg shadow-sm' : " "}`}>
+                
 
                     <a href="#logo">
-                        <Image src={assets.logo} alt='logo' className='w-28 cursor-pointer mr-14' />
+                        <Image src={assets.logo} alt='logo' className='w-28 mt-0 cursor-pointer mr-14' />
                     </a>
-                    <span className='absolute top-12 left-9'>.dev</span>
-                </div>
+               
 
 
 
-                <ul className='hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 shadow-md hover:shadow-lg p-6 bg-white'>
+                <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ?  "" : "shadow-md hover:shadow-lg p-6 bg-white" }` }>
                     <li className='display flex space-x-4'>
                         <a className="font-Ovo " href="#top">Home</a>
                         <a className="font-Ovo" href="#about">AboutMe</a>
@@ -50,7 +65,7 @@ const navbar = () => {
 
 
                     <a href="#contact" className='hidden lg:flex items-center gap-3 px-10 py-2 border border-gray-500 rounded-full ml-4 font-Ovo hover:shadow-lg'>Contact
-                        <Image src={assets.arrow} alt='arrow' className='w-5' />
+                        <Image src={assets.arrowBlack} alt='arrow' className='w-5' />
                     </a>
 
                     <button className='block md:hidden' onClick={openMenu}>

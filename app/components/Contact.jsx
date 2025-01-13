@@ -1,6 +1,7 @@
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
+import {motion} from 'motion/react'
 
 
 const contact = () => {
@@ -36,39 +37,85 @@ const contact = () => {
 
 
     return (
-        <div id='contact' className='w-full px-[12%] py-10 scroll-mt-20 bg-slate-50 bg-[length:90%_auto]'>
+        <motion.div
+            initial={{ opacity:0}}
+            whileInView={{ opacity:1}}
+            transition={{duration:0.1}}
+        id='contact' className='w-full px-[12%] py-10 scroll-mt-20 bg-slate-50 bg-[length:90%_auto]'>
 
-            <h4 className='text-center mb-2 text-lg font-Ovo'>
+            <motion.h4 
+            initial={{ y:-20, opacity:0}}
+            whileInView={{ y:0, opacity:1}}
+            transition={{duration:0.3, delay:0.5}}
+            
+            className='text-center mb-2 text-lg font-Ovo'>
                 Lets connect
-            </h4>
+            </motion.h4>
 
 
-            <h2 className='text-center text-5xl font-Ovo'>Get in Tocuh</h2>
+            <motion.h2 
+            initial={{ y:-20, opacity:0}}
+            whileInView={{y:0,  opacity:1}}
+            transition={{duration:0.3, delay:0.5}}
+            
+            className='text-center text-5xl font-Ovo'>Get in Tocuh</motion.h2>
 
-            <p className='text-center mt-5 mb-12 max-w-2xl mx-auto font-Ovo'>
+            <motion.p 
+            initial={{ opacity:0}}
+            whileInView={{ opacity:1}}
+            transition={{duration:0.9, delay:0.7}}
+            className='text-center mt-5 mb-12 max-w-2xl mx-auto font-Ovo'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.accusamus! Nulla!
-            </p>
+            </motion.p>
 
 
 
-            <form onSubmit={onSubmit} className='max-w-2xl mx-auto'>
+            <motion.form 
+            initial={{ opacity:0}}
+            whileInView={{ opacity:1}}
+            transition={{duration:0.9, delay:0.5}}
+            
+            
+            onSubmit={onSubmit} className='max-w-2xl mx-auto'>
 
                 <div className='grid grid-cols-auto gap-6 mt-10 mb-8'>
-                    <input type="text" placeholder='Name' required className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' name='name'/>
-                    <input type="email" placeholder='email' required className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' name='email' />
-                </div>
-                <textarea rows='6' placeholder='Message' required className='w-full p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6' name='messgae'></textarea>
+                    <motion.input 
+                    initial={{x:-50, opacity:0}}
+                    whileInView={{x:0, opacity:1}}
+                    transition={{delay:1.1, duration:0.6}}
+                    
+                    type="text" placeholder='Name' required className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' name='name'/>
+                    <motion.input
+                    initial={{x:50, opacity:0}}
+                    whileInView={{x:0, opacity:1}}
+                    transition={{delay:1.2, duration:0.6}}
 
-                <button type='submit' className='py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500'> Send
+                    
+                    
+                    type="email" placeholder='email' required className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' name='email' />
+                </div>
+                <motion.textarea 
+                initial={{y:100, opacity:0}}
+                whileInView={{y:0, opacity:1}}
+                transition={{delay:1.2, duration:0.6}}
+                
+                
+                rows='6' placeholder='Message' required className='w-full p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6' name='messgae'></motion.textarea>
+
+                <motion.button 
+                whileHover={{scale:1.1}}
+                transition={{duration:0.3}}
+                
+                type='submit' className='py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500'> Send
                     <Image src={assets.right} alt='arrow' className='w-4' />
-                </button>
+                </motion.button>
 
 
                 <p>{result}</p>
-            </form>
+            </motion.form>
 
 
-        </div>
+        </motion.div>
     )
 }
 

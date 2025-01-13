@@ -2,31 +2,65 @@
 import { assets, workData } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
+import { motion } from 'motion/react'
 
 
 const work = () => {
     return (
-        <div id="work" className='w-full px-[12%] py-10 scroll-mt-20'>
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
 
-            <h4 className='text-center mb-2 text-lg font-Ovo'>
+
+            id="work" className='w-full px-[12%] py-10 scroll-mt-20'>
+
+            <motion.h4
+                initial={{ y: -20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+
+                className='text-center mb-2 text-lg font-Ovo'>
                 Portfolio
-            </h4>
+            </motion.h4>
 
 
-            <h2 className='text-center text-5xl font-Ovo'>My Work</h2>
+            <motion.h2
+                initial={{ y: -20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
 
-            <p className='text-center mt-5 mb-12 max-w-2xl mx-auto font-Ovo'>
+                className='text-center text-5xl font-Ovo'>My Work</motion.h2>
+
+            <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+
+
+
+                className='text-center mt-5 mb-12 max-w-2xl mx-auto font-Ovo'>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime quibusdam, quod in repellat hic illum eius vitae fuga, nisi quia!
-            </p>
+            </motion.p>
 
 
-            <div className='grid grid-cols-auto my-10 gap-5'>
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.7 }}
+
+
+                className='grid grid-cols-auto my-10 gap-5'>
                 {workData.map((project, index) => (
                     <div key={index}
                         className='aspect-square bg-cover bg-no-repeat bg-center rounded-lg relative cursor-pointer group'
                         style={{ backgroundImage: `url(${project.bgimage})` }}>
 
-                        <div className='bg-white w-11/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 p-5 flex justify-between items-center duration-500 group-hover:bottom-7 '>
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3 }}
+
+                            className='bg-white w-11/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 p-5 flex justify-between items-center duration-500 group-hover:bottom-7 '>
 
 
                             <div>
@@ -44,19 +78,24 @@ const work = () => {
                                 <Image src={assets.send} alt="img" className='w-5' />
                             </div>
 
-                        </div>
+                        </motion.div>
 
 
                     </div>
                 ))}
-            </div>
+            </motion.div>
 
-            <a href="" className='w-max flex items-center justify-center gap-2 text-gray-700 border-[.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 hover:-translate-y-1'>
-                Show More <Image src={assets.right} alt="img" className='w-4'/>
-            </a>
+            <motion.a
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.7 }}
+
+                href="" className='w-max flex items-center justify-center gap-2 text-gray-700 border-[.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500'>
+                Show More <Image src={assets.right} alt="img" className='w-4' />
+            </ motion.a>
 
 
-        </div>
+        </motion.div >
     )
 }
 

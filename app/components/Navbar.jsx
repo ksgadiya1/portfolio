@@ -1,11 +1,11 @@
-import React, {  useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 
 import { assets } from '@/assets/assets'
 
 const navbar = () => {
 
-    const [isScroll, setScroll] = useState(false) 
+    const [isScroll, setScroll] = useState(false)
 
     const sideMenu = useRef();
 
@@ -15,20 +15,20 @@ const navbar = () => {
 
     const closeMenu = () => {
         sideMenu.current.style.transform = 'translateX(16rem)';
-    }   
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
-            if (scrollY > 50 ){
+            if (scrollY > 50) {
                 setScroll(true)
 
             }
-            else{
+            else {
                 setScroll(false)
             }
         })
-        
-    },[])
+
+    }, [])
 
 
 
@@ -40,16 +40,16 @@ const navbar = () => {
     return (
         <>
             <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 opacity-90 ${isScroll ? 'bg-white bg-opacity-50 backdrop-blur-lg shadow-sm' : " "}`}>
-                
-
-                    <a href="#logo">
-                        <Image src={assets.logo} alt='logo' className='w-28 mt-0 cursor-pointer mr-14' />
-                    </a>
-               
 
 
+                <a href="#logo">
+                    <Image src={assets.logo} alt='logo' className='w-28 mt-0 cursor-pointer mr-14' />
+                </a>
 
-                <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ?  "" : "shadow-md hover:shadow-lg p-6 bg-white" }` }>
+
+
+
+                <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? "" : "shadow-md hover:shadow-lg p-6 bg-white"}`}>
                     <li className='display flex space-x-4'>
                         <a className="font-Ovo " href="#top">Home</a>
                         <a className="font-Ovo" href="#about">AboutMe</a>
@@ -59,9 +59,7 @@ const navbar = () => {
                     </li>
                 </ul>
                 <div className='flex items-center gap-4'>
-                    <button>
-                        <Image src={assets.themes} alt='theme' className='w-6' />
-                    </button>
+
 
 
                     <a href="#contact" className='hidden lg:flex items-center gap-3 px-10 py-2 border border-gray-500 rounded-full ml-4 font-Ovo hover:shadow-lg'>Contact
@@ -87,22 +85,22 @@ const navbar = () => {
                     <li>
                         <a className="font-Ovo " href="#top" onClick={closeMenu}>Home</a>
                     </li>
-                        <li>
+                    <li>
 
                         <a className="font-Ovo" href="#about" onClick={closeMenu}>AboutMe</a>
-                        </li>
-                        <li>
-                            
+                    </li>
+                    <li>
+
                         <a className="font-Ovo" href="#services" onClick={closeMenu}>Services</a>
-                        </li>
-                        <li>
+                    </li>
+                    <li>
 
                         <a className="font-Ovo" href="#work" onClick={closeMenu}>MyWork</a>
-                        </li>
-                        <li>
+                    </li>
+                    <li>
 
                         <a className="font-Ovo" href="#contact" onClick={closeMenu}>Contact</a>
-                        </li>
+                    </li>
 
                 </ul>
             </nav>
